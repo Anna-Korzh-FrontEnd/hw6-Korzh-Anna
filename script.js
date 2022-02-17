@@ -2,31 +2,49 @@
 
 //1:
 
-// function sumTo(n) {
-//     if ( n === 1) {
-//         return 1;
-//     }else {
-//         return n + sumTo(n-1);
+// function sumTwoSmallestNumbers(...args){
+//     let sortedArray = args.sort((a, b) => a - b);
+//     if(sortedArray.length >1){
+//         return sortedArray[0] + sortedArray[1];
+//     } else {
+//         console.error("Передано менее 2-х чисел") ;
 //     }
-// }
-// console.log(sumTo(3));
-// console.log(sumTo(5));
+// };
+//
+// console.log(sumTwoSmallestNumbers(19, 5, 42, 2, 77)); // 7
+// console.log(sumTwoSmallestNumbers(1, 3, 2)); // 3
+// console.log(sumTwoSmallestNumbers(1)); // undefined и отдельный console.error("...")
 
 //2:
-const sentance = "Lorem ipsum dolor sit amet";
-function findShort (str){
-    let shortestWord = str.split(" ").sort(function(a, b) {
-        return a.length - b.length;
-    });
-    return shortestWord[0];
+
+function createCalculator(number) {
+    let object = {
+        x: number,
+        sum: function (arg){
+            object.x += arg;
+            return object.x
+        },
+        mult: function (arg){
+            object.x = object.x * arg;
+            return object.x
+        },
+        sub: function (arg) {
+            object.x = object.x - arg;
+            return object.x
+        },
+        div: function (arg) {
+            object.x = object.x / arg;
+            return object.x
+        }
+    }
+    return object;
 }
+const calc = createCalculator(10);
 
-
-console.log(findShort(sentance)); // sit
-console.log(findShort("Hello world")); // Hello
-console.log(findShort("Hi")); // Hi
-console.log(findShort("She is David's sister")); // is
-
+console.log(calc.sum(5)); /// 15
+console.log(calc.mult(10)); // 150
+console.log(calc.sub(40)); // 110
+console.log(calc.div(10)); // 11
 
 
 
